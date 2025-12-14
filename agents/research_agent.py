@@ -60,6 +60,33 @@ class ResearchAgent:
 
     def research(self, topic: str) -> dict:
         self.research_count += 1
+        
+        # Handle multi-topic queries (e.g., "transformer reinforcement")
+        topics = topic.split() if " " in topic else [topic]
+        
+        if len(topics) > 1:
+            # Research multiple topics and combine results
+            all_results = []
+            all_categories = []
+            for single_topic in topics:
+                result = self._research_single_topic(single_topic)
+                all_results.extend(result.get("result", []))
+                if result.get("matched_category"):
+                    all_categories.append(result.get("matched_category"))
+            
+            return {
+                "result": all_results,
+                "topics": topics,
+                "matched_categories": list(set(all_categories)),
+                "research_id": self.research_count,
+                "completeness": "high" if all_results else "low",
+                "items_found": len(all_results),
+                "query_type": "multi-topic"
+            }
+        else:
+            return self._research_single_topic(topic)
+    
+    def _research_single_topic(self, topic: str) -> dict:
         topic_lower = topic.lower()
         result_items = []
         matched_topic = None

@@ -120,18 +120,19 @@ class Coordinator:
             if keyword in q:
                 scores["analysis"] += score
         
-        # Normalize scores
-        max_score = max(scores.values()) if scores.values() else 1
-        confidence = (max_score / 10.0) if max_score > 0 else 0.5
-        
-        # always do research first, then analysis
+        # Calculate confidence based on what we're doing
         if scores["analysis"] > 0.5:  
+            # Doing both research and analysis - high confidence
             steps.append("research")
             steps.append("analysis")
-        #add research if any relevance detected
+            # For analysis queries with strong keywords, return high confidence
+            confidence = 0.90 if scores["analysis"] >= 0.7 else 0.75
         elif scores["research"] > 0.1:
+            # Doing only research - medium confidence
             steps.append("research")
+            confidence = min(0.85, 0.4 + (scores["research"] / 10.0))
         else:
+            # Fallback to research - lower confidence
             steps.append("research")
             confidence = 0.4
         
@@ -157,12 +158,23 @@ class Coordinator:
             "classification", "regression", "clustering", "optimization", "algorithm"
         ]
         
-        #check for technical terms
+        # Check for comparison keywords (indicates multi-topic query)
+        comparison_keywords = ["compare", "vs", "versus", "difference", "vs."]
+        is_comparison = any(kw in query.lower() for kw in comparison_keywords)
+        
+        # Extract ALL technical terms for comparison queries
+        found_topics = []
         for word in words:
             if word in technical_terms:
-                return word
+                found_topics.append(word)
         
-        #filter common stop words
+        # For comparisons, return all topics joined; for single queries, return first topic
+        if is_comparison and len(found_topics) >= 2:
+            return " ".join(found_topics[:2])  # Return first 2 topics for comparison
+        elif found_topics:
+            return found_topics[0]
+        
+        # Filter common stop words for fallback
         topic_words = [w for w in words if w not in self.stop_words and len(w) > 2]
         
         if topic_words:
