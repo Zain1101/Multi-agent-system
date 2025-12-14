@@ -1,0 +1,36 @@
+TEST: MULTI_STEP
+Timestamp: 2025-12-14T15:15:14.880026
+================================================================================
+
+Task Steps:
+
+  Step 1: Find information about reinforcement learning approaches
+
+  Step 2: Analyze the different RL algorithms
+
+  Step 3: Identify challenges in RL implementation
+
+
+Step 1 Response:
+{'research': {'result': [{'name': 'Q-Learning', 'type': 'Value-based', 'model_free': True, 'exploration': 'epsilon-greedy'}, {'name': 'Policy Gradient', 'type': 'Policy-based', 'model_free': True, 'gradient_based': True}, {'name': 'Actor-Critic', 'type': 'Hybrid', 'components': ['Actor', 'Critic'], 'advantage': 'Reduced variance'}, {'name': 'DQN', 'type': 'Deep Q-Learning', 'innovation': 'Deep neural networks', 'stability': 'Experience replay'}, {'name': 'PPO', 'type': 'Policy-based', 'algorithm': 'Trust region', 'stability': 'Clipped objective'}], 'topic': 'reinforcement', 'matched_category': 'reinforcement learning', 'research_id': 4, 'completeness': 'high', 'items_found': 5, 'query_type': 'specific'}}
+
+Confidence: 0.33999999999999997%
+
+
+Step 2 Response:
+{'research': {'result': ["No specific match found. Try queries like: 'What is CNN?', 'Compare Adam and SGD', 'Explain Transformers', 'What is LSTM?'"], 'topic': 'algorithms', 'matched_category': None, 'research_id': 5, 'completeness': 'low', 'items_found': 0, 'query_type': 'none'}}
+
+Confidence: 0.06999999999999999%
+
+
+Step 3 Response:
+{'research': {'result': ["No specific match found. Try queries like: 'What is CNN?', 'Compare Adam and SGD', 'Explain Transformers', 'What is LSTM?'"], 'topic': 'implementation', 'matched_category': None, 'research_id': 6, 'completeness': 'low', 'items_found': 0, 'query_type': 'none'}}
+
+Confidence: 0.4%
+
+
+Summary:
+
+Steps Completed: 3
+
+Average Confidence: 0.3%

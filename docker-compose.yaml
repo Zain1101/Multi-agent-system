@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  krr-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: krr-multi-agent-system
+    ports:
+      - "8501:8501"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - PYTHONIOENCODING=utf-8
+    volumes:
+      - ./memory:/app/memory
+      - ./outputs:/app/outputs
+      - ./logs:/app/logs
+    networks:
+      - krr-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  krr-network:
+    driver: bridge

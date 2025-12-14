@@ -1,0 +1,20 @@
+TEST: SIMPLE_QUERY
+Timestamp: 2025-12-14T15:15:14.849830
+================================================================================
+
+Query: What are the main types of neural networks?
+
+
+System Response:
+{'research': {'result': [{'name': 'CNN', 'architecture': 'Convolutional', 'best_for': 'Image processing', 'strength': 'Local feature extraction'}, {'name': 'RNN', 'architecture': 'Recurrent', 'best_for': 'Sequences', 'strength': 'Temporal dependencies'}, {'name': 'LSTM', 'architecture': 'Recurrent', 'best_for': 'Long sequences', 'strength': 'Vanishing gradient solution'}, {'name': 'GRU', 'architecture': 'Recurrent', 'best_for': 'Long sequences', 'strength': 'Simplified LSTM'}, {'name': 'Transformer', 'architecture': 'Attention-based', 'best_for': 'NLP, sequences', 'strength': 'Parallelizable, self-attention'}, {'name': 'DNN', 'architecture': 'Fully-connected', 'best_for': 'General tasks', 'strength': 'Versatile'}], 'topic': 'neural', 'matched_category': 'neural networks', 'research_id': 1, 'completeness': 'high', 'items_found': 6, 'query_type': 'category'}}
+
+
+Confidence: 0.19%
+
+Source: execution
+
+Execution Trace:
+["Research on 'neural' completed"]
+
+
+Memory Records Stored: 1

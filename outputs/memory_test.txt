@@ -1,0 +1,27 @@
+TEST: MEMORY_TEST
+Timestamp: 2025-12-14T15:15:14.866943
+================================================================================
+
+Query 1: What is a CNN?
+
+Response 1:
+{'research': {'result': [{'name': 'CNN', 'architecture': 'Convolutional', 'best_for': 'Image processing', 'strength': 'Local feature extraction'}], 'topic': 'cnn', 'matched_category': 'neural networks', 'research_id': 3, 'completeness': 'high', 'items_found': 1, 'query_type': 'specific'}}
+
+
+Query 2: What did we discuss earlier about neural networks?
+
+Response 2:
+{'context': 'Based on our earlier conversations', 'previous_topics': ['What are the main types of neural networks?', 'Research transformer architectures and analyze their computational efficiency compared to RNNs', 'What is a CNN?'], 'summary': [{'research': {'result': [{'name': 'CNN', 'architecture': 'Convolutional', 'best_for': 'Image processing', 'strength': 'Local feature extraction'}, {'name': 'RNN', 'architecture': 'Recurrent', 'best_for': 'Sequences', 'strength': 'Temporal dependencies'}, {'name': 'LSTM', 'architecture': 'Recurrent', 'best_for': 'Long sequences', 'strength': 'Vanishing gradient solution'}, {'name': 'GRU', 'architecture': 'Recurrent', 'best_for': 'Long sequences', 'strength': 'Simplified LSTM'}, {'name': 'Transformer', 'architecture': 'Attention-based', 'best_for': 'NLP, sequences', 'strength': 'Parallelizable, self-attention'}, {'name': 'DNN', 'architecture': 'Fully-connected', 'best_for': 'General tasks', 'strength': 'Versatile'}], 'topic': 'neural', 'matched_category': 'neural networks', 'research_id': 1, 'completeness': 'high', 'items_found': 6, 'query_type': 'category'}}, {'research': {'result': [{'name': 'Transformer', 'architecture': 'Attention-based', 'best_for': 'NLP, sequences', 'strength': 'Parallelizable, self-attention'}], 'topic': 'transformer', 'matched_category': 'neural networks', 'research_id': 2, 'completeness': 'high', 'items_found': 1, 'query_type': 'specific'}, 'analysis': {'status': 'success', 'summary': '[NEURAL NETWORK COMPARISON]\n\n\n**Transformer**\n  Speed: █████████░ (9/10)\n  Accuracy: ██████████ (10/10)\n  Interpretability: ██████░░░░ (6/10)\n  Complexity: █████████░ (9/10)\n  Use_cases: NLP, parallel processing', 'confidence': 0.92, 'analysis_id': 1, 'items_analyzed': 1, 'analysis_type': 'comparative'}}, {'research': {'result': [{'name': 'CNN', 'architecture': 'Convolutional', 'best_for': 'Image processing', 'strength': 'Local feature extraction'}], 'topic': 'cnn', 'matched_category': 'neural networks', 'research_id': 3, 'completeness': 'high', 'items_found': 1, 'query_type': 'specific'}}]}
+
+Confidence: 0.75%
+
+
+Query History:
+
+  1. What are the main types of neural networks?
+
+  2. Research transformer architectures and analyze their computational efficiency compared to RNNs
+
+  3. What is a CNN?
+
+  4. What did we discuss earlier about neural networks?

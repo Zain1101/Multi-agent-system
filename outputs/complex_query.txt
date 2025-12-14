@@ -1,0 +1,20 @@
+TEST: COMPLEX_QUERY
+Timestamp: 2025-12-14T15:15:14.853184
+================================================================================
+
+Query: Research transformer architectures and analyze their computational efficiency compared to RNNs
+
+
+System Response:
+{'research': {'result': [{'name': 'Transformer', 'architecture': 'Attention-based', 'best_for': 'NLP, sequences', 'strength': 'Parallelizable, self-attention'}], 'topic': 'transformer', 'matched_category': 'neural networks', 'research_id': 2, 'completeness': 'high', 'items_found': 1, 'query_type': 'specific'}, 'analysis': {'status': 'success', 'summary': '[NEURAL NETWORK COMPARISON]\n\n\n**Transformer**\n  Speed: █████████░ (9/10)\n  Accuracy: ██████████ (10/10)\n  Interpretability: ██████░░░░ (6/10)\n  Complexity: █████████░ (9/10)\n  Use_cases: NLP, parallel processing', 'confidence': 0.92, 'analysis_id': 1, 'items_analyzed': 1, 'analysis_type': 'comparative'}}
+
+
+Confidence: 0.26%
+
+Source: execution
+
+Execution Trace:
+["Research on 'transformer' completed", 'Analysis completed']
+
+
+Agent Coordination Trace:

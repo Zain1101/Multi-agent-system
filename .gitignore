@@ -1,0 +1,4 @@
+venv/
+__pycache__/
+*.pyc
+memory/memory_store.json
