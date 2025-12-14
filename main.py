@@ -3,7 +3,6 @@ import sys
 import io
 import json
 
-# Handle unicode in Windows
 if sys.platform == 'win32':
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
@@ -18,8 +17,7 @@ def main():
     for q in queries:
         print(f"\nQuery: {q}")
         result = coordinator.handle_query(q)
-        
-        # Pretty print the results
+
         response = result["response"]
         print(f"Source: {result['source']}")
         print(f"Confidence: {result['confidence']:.0%}")
@@ -31,8 +29,7 @@ def main():
                 if isinstance(item, dict):
                     print(f"  - {item.get('name', 'Unknown')}")
                 else:
-                    print(f"  - {item}")
-        
+                    print(f"  - {item}")  
         if 'analysis' in response:
             analysis = response['analysis']
             print(f"\nAnalysis - Status: {analysis['status']}, Confidence: {analysis['confidence']:.0%}")

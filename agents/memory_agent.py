@@ -1,6 +1,3 @@
-"""
-Memory Agent - Handles structured memory with vector search and context management
-"""
 import json
 import os
 from datetime import datetime
@@ -10,14 +7,12 @@ from numpy.linalg import norm
 
 
 def embed(text):
-    """Convert text to character-frequency vector"""
     vec = np.zeros(26)
     text = text.lower()
     for c in text:
         if 'a' <= c <= 'z':
             vec[ord(c)-ord('a')] += 1
     return vec
-
 
 class MemoryAgent:
     """
@@ -36,7 +31,6 @@ class MemoryAgent:
                 json.dump([], f)
 
     def _load(self) -> List[Dict[str, Any]]:
-        """Load memory from JSON file"""
         with open(self.file, "r") as f:
             try:
                 data = json.load(f)
@@ -45,15 +39,11 @@ class MemoryAgent:
         return data
 
     def _save(self, data: List[Dict[str, Any]]):
-        """Save memory to JSON file"""
         with open(self.file, "w") as f:
             json.dump(data, f, indent=2)
 
     def store(self, topic: str, record: Dict[str, Any]) -> str:
-        """
-        Store a memory record with full metadata.
-        Returns the record ID.
-        """
+        # Store a memory record with embedding and metadata
         vec = embed(topic)
         memory = self._load()
         record_id = f"mem_{len(memory) + 1}"
@@ -73,10 +63,7 @@ class MemoryAgent:
         return record_id
 
     def retrieve(self, topic: str, threshold: float = 0.85) -> Optional[Dict[str, Any]]:
-        """
-        Retrieve memory by similarity search.
-        Returns best matching record if similarity >= threshold, else None.
-        """
+        # Retrieve a memory record by topic using cosine similarity
         vec = embed(topic)
         memory = self._load()
         
@@ -92,14 +79,11 @@ class MemoryAgent:
             if score > best_score:
                 best_score = score
                 best_match = entry["record"]
-        
-        # High threshold (0.85) to avoid false positives
         if best_score >= threshold:
             return best_match
         return None
     
     def search_by_keywords(self, keywords: List[str]) -> List[Dict[str, Any]]:
-        """Search memory by keywords"""
         memory = self._load()
         results = []
         for entry in memory:
@@ -109,10 +93,8 @@ class MemoryAgent:
         return results
     
     def get_all(self) -> List[Dict[str, Any]]:
-        """Get all memory records"""
         memory = self._load()
         return [entry["record"] for entry in memory]
     
     def clear(self):
-        """Clear all memory"""
         self._save([])

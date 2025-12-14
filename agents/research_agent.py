@@ -2,9 +2,7 @@ class ResearchAgent:
     def __init__(self):
         self.knowledge_base = self._initialize_knowledge_base()
         self.research_count = 0
-
     def _initialize_knowledge_base(self):
-        """Initialize comprehensive knowledge base"""
         return {
             "optimization techniques": {
                 "items": [
@@ -61,28 +59,20 @@ class ResearchAgent:
         }
 
     def research(self, topic: str) -> dict:
-        """Conduct research on a given topic with detailed results"""
         self.research_count += 1
         topic_lower = topic.lower()
-        
-        # Find matching topic in knowledge base with intelligent matching
         result_items = []
         matched_topic = None
-        
-        # Create a mapping of keywords to categories for better matching
         keyword_to_category = {
-            # Optimization keywords
             "adam": "optimization techniques",
             "sgd": "optimization techniques",
             "gradient": "optimization techniques",
             "descent": "optimization techniques",
             "optimizer": "optimization techniques",
-            "optimization": "optimization techniques",  # Add this!
+            "optimization": "optimization techniques",  
             "rmsprop": "optimization techniques",
             "adagrad": "optimization techniques",
             "nadam": "optimization techniques",
-            
-            # Neural network keywords
             "neural": "neural networks",
             "network": "neural networks",
             "cnn": "neural networks",
@@ -93,8 +83,6 @@ class ResearchAgent:
             "dnn": "neural networks",
             "convolutional": "neural networks",
             "recurrent": "neural networks",
-            
-            # Reinforcement learning keywords
             "reinforcement": "reinforcement learning",
             "q-learning": "reinforcement learning",
             "policy": "reinforcement learning",
@@ -102,8 +90,6 @@ class ResearchAgent:
             "critic": "reinforcement learning",
             "dqn": "reinforcement learning",
             "ppo": "reinforcement learning",
-            
-            # Machine learning keywords
             "regression": "machine learning models",
             "classification": "machine learning models",
             "svm": "machine learning models",
@@ -112,21 +98,17 @@ class ResearchAgent:
             "forest": "machine learning models",
             "k-means": "machine learning models",
             "clustering": "machine learning models",
-            
-            # Transformer keywords
             "bert": "transformers",
             "gpt": "transformers",
             "t5": "transformers",
             "roberta": "transformers",
             "electra": "transformers",
             "attention": "transformers",
-            
-            # General deep learning
             "deep": "neural networks",
             "learning": "reinforcement learning"
         }
         
-        # First try exact category matching
+        #try exact category matching
         for key, content in self.knowledge_base.items():
             if key in topic_lower:
                 result_items = content["items"]
@@ -139,33 +121,32 @@ class ResearchAgent:
                     "completeness": "high",
                     "items_found": len(result_items)
                 }
-        
-        # Second: try keyword-based matching
+        #try keyword-based matching for more specific queries
         best_match_score = 0
         best_match_category = None
         specific_item = None
         
         for keyword, category in keyword_to_category.items():
             if keyword in topic_lower:
-                score = len(keyword)  # Longer keywords = more specific
+                score = len(keyword)  #Longer keywords= more specific
                 if score > best_match_score:
                     best_match_score = score
                     best_match_category = category
                     specific_item = keyword
         
-        # If we found a matching category via keywords
+        # If found a matching category via keywords
         if best_match_category and best_match_category in self.knowledge_base:
             content = self.knowledge_base[best_match_category]
             all_items = content["items"]
             
-            # Check if we should filter to a specific item
-            if specific_item and best_match_score >= 3:  # Filter for specific terms (>= instead of >)
+            # filter to a specific item
+            if specific_item and best_match_score >= 3: 
                 filtered = [item for item in all_items 
                            if isinstance(item, dict) and specific_item.lower() in item.get("name", "").lower()]
                 if filtered:
                     result_items = filtered
                 else:
-                    result_items = all_items  # Fall back to all if no specific match
+                    result_items = all_items 
             else:
                 result_items = all_items
             
@@ -179,8 +160,6 @@ class ResearchAgent:
                 "items_found": len(result_items),
                 "query_type": "specific" if len(result_items) < 6 else "category"
             }
-        
-        # Default: return general ML knowledge
         return {
             "result": ["No specific match found. Try queries like: 'What is CNN?', 'Compare Adam and SGD', 'Explain Transformers', 'What is LSTM?'"],
             "topic": topic,

@@ -2,3 +2,9 @@ venv/
 __pycache__/
 *.pyc
 memory/memory_store.json
+ASSIGNMENT.md
+CHECKLIST.md
+START_HERE.md
+SUBMISSION.md
+TEST_QUERIES.md
+VIDEO_QUERIES.txt

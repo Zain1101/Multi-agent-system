@@ -52,13 +52,6 @@ Dockerfile                  # Container setup
 docker-compose.yaml         # Docker configuration
 ```
 
-## Testing
-
-Run the test suite:
-
-```bash
-python tests/test_scenarios.py
-```
 
 This tests the system with 5 different types of queries to make sure everything works properly.
 

@@ -20,7 +20,6 @@ class AnalysisAgent:
         }
 
     def analyze(self, data) -> dict:
-        """Advanced analysis with detailed comparisons and metrics"""
         self.analysis_count += 1
         
         if not data:
@@ -80,7 +79,6 @@ class AnalysisAgent:
         }
 
     def _compare_neural_networks(self, data) -> dict:
-        """Compare neural network architectures"""
         nn_to_compare = {}
         metrics = self.comparison_metrics["neural_networks"]
         
@@ -92,7 +90,6 @@ class AnalysisAgent:
         return nn_to_compare if nn_to_compare else metrics
 
     def _compare_optimizers(self, data) -> dict:
-        """Compare optimization algorithms"""
         opt_to_compare = {}
         metrics = self.comparison_metrics["optimization"]
         
@@ -104,10 +101,8 @@ class AnalysisAgent:
         return opt_to_compare if opt_to_compare else metrics
 
     def _format_comparison(self, comparison_data: dict) -> str:
-        """Format comparison data for display"""
         if not comparison_data:
             return ""
-        
         lines = []
         for item_name, metrics in comparison_data.items():
             lines.append(f"\n**{item_name}**")
